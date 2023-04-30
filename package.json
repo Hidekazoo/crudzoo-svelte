@@ -6,6 +6,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
@@ -36,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@playwright/test": "^1.33.0",
 		"daisyui": "^2.51.6"
 	}
 }
