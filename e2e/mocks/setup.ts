@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-const API_ENDPOINT = 'http://localhost:8080';
+const API_ENDPOINT = process.env.API_ENDPOINT;
 
 export async function resetMockCommonMappings() {
 	await resetMock();

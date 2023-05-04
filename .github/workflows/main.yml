@@ -2,22 +2,30 @@ name: test
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      mock:
+        image: wiremock/wiremock:2.35.0
+        ports:
+          - 8080:8080
+        options: '--verbose'
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      # - run: npm run build --if-present
+      - run: npm test
+        env:
+          API_ENDPOINT: http://localhost:8080
