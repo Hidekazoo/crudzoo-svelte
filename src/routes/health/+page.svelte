@@ -17,7 +17,7 @@
 			<tr>
 				<th>1</th>
 				<td>bff</td>
-				<td>{data.status}</td>
+				<td data-testid='health-check'>{data.status}</td>
 			</tr>
 		</tbody>
 	</table>
