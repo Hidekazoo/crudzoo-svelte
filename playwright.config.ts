@@ -7,8 +7,10 @@ const config: PlaywrightTestConfig = {
 	},
 	testDir: 'e2e',
 	use: {
-		headless: true,
+		headless: true
 	},
+	globalSetup: './e2e/mocks/global-setup',
+	globalTeardown: './e2e/mocks/global-teardown'
 };
 
 export default config;

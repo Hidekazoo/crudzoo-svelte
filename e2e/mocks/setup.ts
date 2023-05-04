@@ -26,6 +26,24 @@ export async function setupMock() {
 			}
 		})
 	});
+	await fetch(`${API_ENDPOINT}/__admin/mappings`, {
+		method: 'POST',
+		body: JSON.stringify({
+			request: {
+				method: 'OPTIONS',
+				urlPattern: '.*'
+			},
+			response: {
+				status: 200,
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': '*',
+					'Access-Control-Allow-Headers': '*'
+				}
+			}
+		})
+	});
+	setupWeightMock();
 }
 
 export async function setupMockHealthCheckNg() {
@@ -52,5 +70,29 @@ export async function setupMockHealthCheckNg() {
 export async function resetMock() {
 	await fetch(`${API_ENDPOINT}/__admin/mappings/reset`, {
 		method: 'POST'
+	});
+}
+
+export async function setupWeightMock() {
+	await fetch(`${API_ENDPOINT}/__admin/mappings`, {
+		method: 'POST',
+		body: JSON.stringify({
+			request: {
+				method: 'POST',
+				url: '/v1/weight'
+			},
+			response: {
+				status: 200,
+				jsonBody: {
+					weight: '80'
+				},
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': '*',
+          'Access-Control-Allow-Headers': '*'
+				}
+			}
+		})
 	});
 }
