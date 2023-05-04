@@ -12,7 +12,6 @@ jobs:
         image: wiremock/wiremock:2.35.0
         ports:
           - 8080:8080
-        options: '--verbose'
     strategy:
       matrix:
         node-version: [18.x]
