@@ -23,7 +23,6 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.26.0",
-		"msw": "^1.2.1",
 		"node-fetch": "^3.3.1",
 		"postcss": "^8.4.14",
 		"postcss-load-config": "^4.0.1",
