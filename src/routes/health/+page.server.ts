@@ -1,6 +1,8 @@
-export async function load({ fetch }) {
+import { API_ENDPOINT } from '../../config';
+
+export async function load() {
 	try {
-		const res = await fetch('http://localhost:8080/v1/health');
+		const res = await fetch(`${API_ENDPOINT}/v1/health`);
 		const data = await res.json();
 		return { status: data.status === 'success' ? 'ok' : 'ng' };
 	} catch (e) {

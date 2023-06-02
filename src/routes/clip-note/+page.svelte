@@ -1,25 +1,27 @@
+<script>
+	export let data;
+</script>
+
 <h1>Clip Note</h1>
 
 <div class="overflow-x-auto">
+	{#each data.errors as error (error)}
+		<div>{error.message}</div>
+	{/each}
 	<table class="table">
-		<!-- head -->
 		<thead>
 			<tr>
 				<th />
-				<th>Name</th>
 				<th>url</th>
-				<th>description</th>
 			</tr>
 		</thead>
 		<tbody>
-			<!-- row 1 -->
-			<tr>
-				<th>1</th>
-				<td>テストサイト</td>
-				<td data-testid="clip-note">https://example.com</td>
-				<td />
-			</tr>
-			<!-- row 2 -->
+			{#each data.clip_note as item (item)}
+				<tr>
+					<th>1</th>
+					<td data-testid="clip-note">{item.url}</td>
+				</tr>
+			{/each}
 		</tbody>
 	</table>
 </div>

@@ -43,7 +43,7 @@ export async function setupMock() {
 			}
 		})
 	});
-	setupWeightMock();
+	setupClipNoteMock();
 }
 
 export async function setupMockHealthCheckNg() {
@@ -73,24 +73,29 @@ export async function resetMock() {
 	});
 }
 
-export async function setupWeightMock() {
+export async function setupClipNoteMock() {
 	await fetch(`${API_ENDPOINT}/__admin/mappings`, {
 		method: 'POST',
 		body: JSON.stringify({
 			request: {
-				method: 'POST',
-				url: '/v1/weight'
+				method: 'GET',
+				url: '/v1/clip-note'
 			},
 			response: {
 				status: 200,
 				jsonBody: {
-					weight: '80'
+					clip_note: [
+						{
+							id: 1,
+							url: 'https://example.com'
+						}
+					]
 				},
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': '*',
-          'Access-Control-Allow-Headers': '*'
+					'Access-Control-Allow-Methods': '*',
+					'Access-Control-Allow-Headers': '*'
 				}
 			}
 		})

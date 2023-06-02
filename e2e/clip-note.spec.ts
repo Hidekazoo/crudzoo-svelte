@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { resetMockCommonMappings, setupMockHealthCheckNg } from './mocks/setup.js';
 
 test.describe('ClipNote Page', () => {
 	test('abount page has expected h1', async ({ page }) => {
