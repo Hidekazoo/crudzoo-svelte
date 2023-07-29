@@ -10,7 +10,8 @@ const config: PlaywrightTestConfig = {
 		headless: true
 	},
 	globalSetup: './e2e/mocks/global-setup',
-	globalTeardown: './e2e/mocks/global-teardown'
+	globalTeardown: './e2e/mocks/global-teardown',
+	timeout: 1000
 };
 
 export default config;
